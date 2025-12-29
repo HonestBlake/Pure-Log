@@ -1,0 +1,11 @@
+# ninja log v7
+42	1170	7887403991166334	pureLog/CMakeFiles/PureLog.dir/source/log.cpp.obj	1147b3ba0437902
+23	1348	7883551536818361	pureLog/CMakeFiles/PureLog.dir/source/outputStream.cpp.obj	40d13959f5aa77c0
+17	1349	7883551536772839	pureLog/CMakeFiles/PureLog.dir/source/logger.cpp.obj	f9daa393d4449e8b
+42	149	7887404494023934	C:/Users/blake/Programing/C++ Projects/Pure Log/lib/PureLog.lib	87d6cd726aa9f7eb
+4	1825	7887403044175407	example/CMakeFiles/Example.dir/example.cpp.obj	c315f8d1f4a37e0f
+1826	1969	7887403062400054	C:/Users/blake/Programing/C++ Projects/Pure Log/example/Example.exe	99a442cf168ae581
+49	148	7883584177198475	pureLog/CMakeFiles/PureLog.dir/source/fileOut.cpp.obj	1fa9e084ecdb298c
+18	1785	7886975345105220	pureLog/CMakeFiles/PureLog.dir/source/consoleOut.cpp.obj	5f3d33d14080d85a
+25	1852	7887404944227248	example/CMakeFiles/Example.dir/example.cpp.obj	c315f8d1f4a37e0f
+1853	2011	7887404962502762	C:/Users/blake/Programing/C++ Projects/Pure Log/example/Example.exe	99a442cf168ae581
