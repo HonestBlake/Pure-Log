@@ -10,11 +10,11 @@
 //                                      |___/  
 // Pure Log, A Simple and Efficient C++ Logging Library
 
-#define PURE_LOG_PURE_VIRTUAL 0
-
 #pragma once
 
-#include "standardLibs.hpp" // #INCLUDE: standardLibs.hpp, Standard Library Includes
+#define PURE_LOG_PURE_VIRTUAL 0
+
+#include "stdIncludes.hpp" // #INCLUDE: standardLibs.hpp, Standard Library Includes
 
 // #NAMESPACE: pureLog, Project Namespace
 namespace pureLog{ 
@@ -46,7 +46,7 @@ namespace pureLog{
 
     // #NAMESPACE: fileOut, Inline Module Namespace
     inline namespace fileOut{
-        class FileOut;
+        template<bool t_isBuffered> class FileOut;
     } // #END: fileOut
 
 } // #END: pureLog

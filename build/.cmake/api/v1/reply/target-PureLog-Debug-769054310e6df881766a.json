@@ -1,0 +1,225 @@
+{
+	"archive" : {},
+	"artifacts" : 
+	[
+		{
+			"path" : "C:/Users/blake/Programing/C++ Projects/Pure Log/lib/PureLog.lib"
+		}
+	],
+	"backtrace" : 1,
+	"backtraceGraph" : 
+	{
+		"commands" : 
+		[
+			"add_library",
+			"target_include_directories",
+			"target_precompile_headers",
+			"target_sources"
+		],
+		"files" : 
+		[
+			"pureLog/CMakeLists.txt"
+		],
+		"nodes" : 
+		[
+			{
+				"file" : 0
+			},
+			{
+				"command" : 0,
+				"file" : 0,
+				"line" : 18,
+				"parent" : 0
+			},
+			{
+				"command" : 1,
+				"file" : 0,
+				"line" : 20,
+				"parent" : 0
+			},
+			{
+				"command" : 2,
+				"file" : 0,
+				"line" : 21,
+				"parent" : 0
+			},
+			{
+				"command" : 3,
+				"file" : 0,
+				"line" : 19,
+				"parent" : 0
+			}
+		]
+	},
+	"codemodelVersion" : 
+	{
+		"major" : 2,
+		"minor" : 9
+	},
+	"compileGroups" : 
+	[
+		{
+			"compileCommandFragments" : 
+			[
+				{
+					"fragment" : "-g -std=c++23"
+				},
+				{
+					"fragment" : "-Winvalid-pch -x c++-header -include \"C:/Users/blake/Programing/C++ Projects/Pure Log/build/pureLog/CMakeFiles/PureLog.dir/cmake_pch.hxx\""
+				}
+			],
+			"includes" : 
+			[
+				{
+					"backtrace" : 2,
+					"path" : "C:/Users/blake/Programing/C++ Projects/Pure Log/include"
+				},
+				{
+					"backtrace" : 2,
+					"path" : "C:/Users/blake/Programing/C++ Projects/Pure Log/pureLog/header"
+				},
+				{
+					"backtrace" : 2,
+					"path" : "C:/Users/blake/Programing/C++ Projects/Pure Log/pureLog/source"
+				}
+			],
+			"language" : "CXX",
+			"languageStandard" : 
+			{
+				"backtraces" : 
+				[
+					1
+				],
+				"standard" : "23"
+			},
+			"precompileHeaders" : 
+			[
+				{
+					"backtrace" : 3,
+					"header" : "C:/Users/blake/Programing/C++ Projects/Pure Log/pureLog/header/stdIncludes.hpp"
+				}
+			],
+			"sourceIndexes" : 
+			[
+				0
+			]
+		},
+		{
+			"compileCommandFragments" : 
+			[
+				{
+					"fragment" : "-g -std=c++23"
+				},
+				{
+					"fragment" : "-Winvalid-pch -include \"C:/Users/blake/Programing/C++ Projects/Pure Log/build/pureLog/CMakeFiles/PureLog.dir/cmake_pch.hxx\""
+				}
+			],
+			"includes" : 
+			[
+				{
+					"backtrace" : 2,
+					"path" : "C:/Users/blake/Programing/C++ Projects/Pure Log/include"
+				},
+				{
+					"backtrace" : 2,
+					"path" : "C:/Users/blake/Programing/C++ Projects/Pure Log/pureLog/header"
+				},
+				{
+					"backtrace" : 2,
+					"path" : "C:/Users/blake/Programing/C++ Projects/Pure Log/pureLog/source"
+				}
+			],
+			"language" : "CXX",
+			"languageStandard" : 
+			{
+				"backtraces" : 
+				[
+					1
+				],
+				"standard" : "23"
+			},
+			"precompileHeaders" : 
+			[
+				{
+					"backtrace" : 3,
+					"header" : "C:/Users/blake/Programing/C++ Projects/Pure Log/pureLog/header/stdIncludes.hpp"
+				}
+			],
+			"sourceIndexes" : 
+			[
+				1,
+				2,
+				3,
+				4
+			]
+		}
+	],
+	"id" : "PureLog::@ec218e9cc09e82b2ff80",
+	"name" : "PureLog",
+	"nameOnDisk" : "PureLog.lib",
+	"paths" : 
+	{
+		"build" : "pureLog",
+		"source" : "pureLog"
+	},
+	"sourceGroups" : 
+	[
+		{
+			"name" : "Source Files",
+			"sourceIndexes" : 
+			[
+				0,
+				1,
+				2,
+				3,
+				4
+			]
+		},
+		{
+			"name" : "Precompile Header File",
+			"sourceIndexes" : 
+			[
+				5
+			]
+		}
+	],
+	"sources" : 
+	[
+		{
+			"backtrace" : 0,
+			"compileGroupIndex" : 0,
+			"path" : "build/pureLog/CMakeFiles/PureLog.dir/cmake_pch.hxx.cxx",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 4,
+			"compileGroupIndex" : 1,
+			"path" : "pureLog/source/log.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 4,
+			"compileGroupIndex" : 1,
+			"path" : "pureLog/source/consoleOut.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 4,
+			"compileGroupIndex" : 1,
+			"path" : "pureLog/source/fileOut.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 4,
+			"compileGroupIndex" : 1,
+			"path" : "pureLog/source/outputStream.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 0,
+			"path" : "build/pureLog/CMakeFiles/PureLog.dir/cmake_pch.hxx",
+			"sourceGroupIndex" : 1
+		}
+	],
+	"type" : "STATIC_LIBRARY"
+}

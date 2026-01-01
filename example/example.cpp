@@ -18,8 +18,25 @@ private:
     }
 };
 
+class File: public pureLog::FileOut<pureLog::OutputStream::UNBUFFERED>{
+    friend File& pureLog::OutputStream::get<File>();
+private:
+    File(): pureLog::FileOut<pureLog::OutputStream::UNBUFFERED>(std::filesystem::path("log.txt")){
+    }
+};
+
+class FileLogger: public pureLog::Logger<FileLogger>{
+    friend class pureLog::Logger<FileLogger>;
+private:
+    FileLogger(): pureLog::Logger<FileLogger>("FileLogger", pureLog::OutputStream::get<File>()){
+        if(!pureLog::OutputStream::get<File>().isOpen()){
+            throw std::runtime_error("Failed to open log file.");
+        }
+    }
+};
+
 int main(){
-    Debugger& debugger = Debugger::get();
+    FileLogger& debugger = FileLogger::get();
     for(int i: std::views::iota(0, 1)){
         debugger.error("Invalid value passed to parser: {}", 3).time();
         debugger.warn("This is a warning message.").location();

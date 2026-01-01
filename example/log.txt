@@ -1,0 +1,30 @@
+[FileLogger] (22:12:18) Error: Invalid value passed to parser: 3
+[FileLogger] Warn: This is a warning message. | int main(), Line: 40 C:/Users/blake/Programing/C++ Projects/Pure Log/example/example.cpp
+[FileLogger] Info: Informational message without additional data.
+[FileLogger] Debug: Debugging value: 42
+[FileLogger] (22:12:18) Critical: Critical error encountered! System will shut down. | int main(), Line: 43 C:/Users/blake/Programing/C++ Projects/Pure Log/example/example.cpp
+[FileLogger] (22:12:31) Error: Invalid value passed to parser: 3
+[FileLogger] Warn: This is a warning message. | int main(), Line: 40 C:/Users/blake/Programing/C++ Projects/Pure Log/example/example.cpp
+[FileLogger] Info: Informational message without additional data.
+[FileLogger] Debug: Debugging value: 42
+[FileLogger] (22:12:31) Critical: Critical error encountered! System will shut down. | int main(), Line: 43 C:/Users/blake/Programing/C++ Projects/Pure Log/example/example.cpp
+[FileLogger] (22:13:39) Error: Invalid value passed to parser: 3
+[FileLogger] Warn: This is a warning message. | int main(), Line: 39 C:/Users/blake/Programing/C++ Projects/Pure Log/example/example.cpp
+[FileLogger] Info: Informational message without additional data.
+[FileLogger] Debug: Debugging value: 42
+[FileLogger] (22:13:39) Critical: Critical error encountered! System will shut down. | int main(), Line: 42 C:/Users/blake/Programing/C++ Projects/Pure Log/example/example.cpp
+[FileLogger] (22:13:48) Error: Invalid value passed to parser: 3
+[FileLogger] Warn: This is a warning message. | int main(), Line: 39 C:/Users/blake/Programing/C++ Projects/Pure Log/example/example.cpp
+[FileLogger] Info: Informational message without additional data.
+[FileLogger] Debug: Debugging value: 42
+[FileLogger] (22:13:48) Critical: Critical error encountered! System will shut down. | int main(), Line: 42 C:/Users/blake/Programing/C++ Projects/Pure Log/example/example.cpp
+[FileLogger] (22:13:51) Error: Invalid value passed to parser: 3
+[FileLogger] Warn: This is a warning message. | int main(), Line: 39 C:/Users/blake/Programing/C++ Projects/Pure Log/example/example.cpp
+[FileLogger] Info: Informational message without additional data.
+[FileLogger] Debug: Debugging value: 42
+[FileLogger] (22:13:51) Critical: Critical error encountered! System will shut down. | int main(), Line: 42 C:/Users/blake/Programing/C++ Projects/Pure Log/example/example.cpp
+[FileLogger] (22:14:9) Error: Invalid value passed to parser: 3
+[FileLogger] Warn: This is a warning message. | int main(), Line: 39 C:/Users/blake/Programing/C++ Projects/Pure Log/example/example.cpp
+[FileLogger] Info: Informational message without additional data.
+[FileLogger] Debug: Debugging value: 42
+[FileLogger] (22:14:9) Critical: Critical error encountered! System will shut down. | int main(), Line: 42 C:/Users/blake/Programing/C++ Projects/Pure Log/example/example.cpp

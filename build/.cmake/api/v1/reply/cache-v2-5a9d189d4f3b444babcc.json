@@ -2,18 +2,6 @@
 	"entries" : 
 	[
 		{
-			"name" : "BUILD_EXAMPLE",
-			"properties" : 
-			[
-				{
-					"name" : "HELPSTRING",
-					"value" : "ON"
-				}
-			],
-			"type" : "BOOL",
-			"value" : "OFF"
-		},
-		{
 			"name" : "CMAKE_ADDR2LINE",
 			"properties" : 
 			[
@@ -151,10 +139,10 @@
 				},
 				{
 					"name" : "HELPSTRING",
-					"value" : "No help, variable specified on the command line."
+					"value" : "CXX compiler"
 				}
 			],
-			"type" : "FILEPATH",
+			"type" : "STRING",
 			"value" : "C:/Program Files/MSYS2/mingw64/bin/g++.exe"
 		},
 		{
