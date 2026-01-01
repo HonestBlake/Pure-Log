@@ -62,3 +62,6 @@ _deps
 
 #depricated files
 better Log/
+
+# build directories
+build/
