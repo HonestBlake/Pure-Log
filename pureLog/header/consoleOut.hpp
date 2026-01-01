@@ -7,36 +7,40 @@
 
 namespace pureLog::consoleOut{ // #scope: pureLog::consoleOut
 
-    // #ENUM: ConsoleOutType, std::uint8_t Enum Class
-    enum class ConsoleInterface: std::uint8_t{
-        STD_COUT, // std::cout
-        STD_CERR, // std::cerr
-        STD_PRINT // std::print
-    }; // #END: ConsoleOutType
-
-    // #CLASS: ConsoleOut
-    template<OutputBuffering t_buffering, ConsoleInterface t_interface> class ConsoleOut final: public ConditionallyBuffered<isBuffered(t_buffering), ConsoleOut<t_buffering, t_interface>>{
+    // #CLASS: StdCout<t_buffering>, Template Class
+    template<bool t_isBuffered> class StdCout: public ConditionallyBuffered<t_isBuffered>{
+    // Friends
+        friend StdCout<t_isBuffered>& OutputStream::get<StdCout<t_isBuffered>>();
     public:
-        friend ConditionallyBuffered<isBuffered(t_buffering), ConsoleOut<t_buffering, t_interface>>;
     // Public Factory Methods
-        ~ConsoleOut() = default; // #DEFAULT: ~ConsoleOut(), Default Public Destructor
+        ~StdCout();
     private:
-    // Protected Factory Methods
-        ConsoleOut() = default; // #DEFAULT: ConsoleOut(), Default Protected Constructor
-    // Protected Methods
+    // Private Factory Methods
+        StdCout() = default; // #DEFAULT: StdCout(), Default Protected Constructor
+    // Private Methods
         void write(const std::string& p_log)override;
         void flushOutput()override;
-    }; // #END: ConsoleOut
+    }; // #END: StdCout<t_buffering>
+
+    // #CLASS: StdCerr<t_buffering>, Template Class
+    template<bool t_isBuffered> class StdCerr: public ConditionallyBuffered<t_isBuffered>{
+    // Friends
+        friend StdCerr<t_isBuffered>& OutputStream::get<StdCerr<t_isBuffered>>();
+    public:
+    // Public Factory Methods
+        ~StdCerr();
+    private:
+    // Private Factory Methods
+        StdCerr() = default; // #DEFAULT: StdCerr(), Default Protected Constructor
+    // Private Methods
+        void write(const std::string& p_log)override;
+        void flushOutput()override;
+    }; // #END: StdCerr<t_buffering>
 
     // Explicit template instantiations for all configurations
-    template class ConsoleOut<OutputBuffering::UNBUFFERED, ConsoleInterface::STD_COUT>;
-    template class ConsoleOut<OutputBuffering::UNBUFFERED, ConsoleInterface::STD_CERR>;
-    template class ConsoleOut<OutputBuffering::UNBUFFERED, ConsoleInterface::STD_PRINT>;
-    template class ConsoleOut<OutputBuffering::MANUAL_FLUSH, ConsoleInterface::STD_COUT>;
-    template class ConsoleOut<OutputBuffering::MANUAL_FLUSH, ConsoleInterface::STD_CERR>;
-    template class ConsoleOut<OutputBuffering::MANUAL_FLUSH, ConsoleInterface::STD_PRINT>;
-    template class ConsoleOut<OutputBuffering::TERMINATE_FLUSH, ConsoleInterface::STD_COUT>;
-    template class ConsoleOut<OutputBuffering::TERMINATE_FLUSH, ConsoleInterface::STD_CERR>;
-    template class ConsoleOut<OutputBuffering::TERMINATE_FLUSH, ConsoleInterface::STD_PRINT>;
+    template class StdCout<OutputStream::BUFFERED>;
+    template class StdCout<OutputStream::UNBUFFERED>;
+    template class StdCerr<OutputStream::BUFFERED>;
+    template class StdCerr<OutputStream::UNBUFFERED>;
 
 } // #END: pureLog::consoleOut

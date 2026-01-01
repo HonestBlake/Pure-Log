@@ -29,22 +29,19 @@ namespace pureLog{
     // #NAMESPACE: outputStream, Inline Module Namespace
     inline namespace outputStream{
         enum class OutputBuffering: std::uint8_t;
-        template<class T_OutputStream> class OutputStream;
-        // #CONCEPT: OutputStreamDerived, Type Concept
-        template<class Type> concept OutputStreamDerived = std::is_base_of_v<OutputStream<Type>, Type>;
-        // #END: OutputStreamDerived
-        
+        class OutputStream;
+        class BufferedOutputStream;
     } // #END: outputStream
 
     // #NAMESPACE: logger, Inline Module Namespace
     inline namespace logger{
-        template<class T_Logger, OutputStreamDerived T_OutputStream> class Logger;
+        template<class T_Derived> class Logger;
     } // #END: logger
 
     // #NAMESPACE: consoleOut, Inline Module Namespace
     inline namespace consoleOut{
-        enum class ConsoleInterface: std::uint8_t;
-        template<OutputBuffering t_buffering, ConsoleInterface t_interface> class ConsoleOut;
+        template<bool t_isBuffered> class StdCout;
+        template<bool t_isBuffered> class StdCerr;
     } // #END: consoleOut
 
     // #NAMESPACE: fileOut, Inline Module Namespace

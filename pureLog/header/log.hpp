@@ -43,10 +43,11 @@ namespace pureLog::log{ // #scope: pureLog::log
     // Public Static Members
         static inline constexpr std::uint8_t NUM_FORMATS = 5;
         static inline constexpr std::string FORMAT_SEPARATOR = " ";
+        static inline constexpr std::string LOG_END = "\n";
         static inline constexpr std::string LEVEL_FORMAT = "{}:";
         static inline constexpr std::string NAME_FORMAT = "[{}]";
-        static inline constexpr std::string TIME_FORMAT = "{}:{}:{}";
-        static inline const std::string LOCATION_FORMAT = "- {}, Line: {} {}";
+        static inline constexpr std::string TIME_FORMAT = "({}:{}:{})";
+        static inline const std::string LOCATION_FORMAT = "| {}, Line: {} {}";
         static inline const std::map<Level, std::string> LEVEL_STRINGS = {
             {Level::INFO, "Info"},
             {Level::WARN, "Warn"},
@@ -55,6 +56,13 @@ namespace pureLog::log{ // #scope: pureLog::log
             {Level::FATAL, "Fatal"},
             {Level::TRACE, "Trace"},
             {Level::DEBUG, "Debug"}
+        };
+        static inline constexpr std::array<Format, NUM_FORMATS> DEFAULT_FORMAT = {
+            Log::Format::NAME,
+            Log::Format::TIME,
+            Log::Format::LEVEL,
+            Log::Format::MESSAGE,
+            Log::Format::LOCATION
         };
     // Public Members
         Level level;

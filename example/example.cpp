@@ -1,48 +1,31 @@
-#include "consoleOut.hpp"
-#include "pureLog.hpp"
 #include <pureLog/pureLog.hpp>
 
-class B{
-
-};
-
-class Output: public pureLog::OutputStream<Output>{
-public:
-    friend class pureLog::OutputStream<Output>;
-    
-
+class Output: public pureLog::BufferedOutputStream{
+    friend Output& pureLog::OutputStream::get<Output>();
 private:
-
-    Output(): pureLog::OutputStream<Output>(){
-
-    }
+    Output(): pureLog::BufferedOutputStream(){}
 
     void write(const std::string& p_log)override{
-        // Simple console output for demonstration
+        std::cout << p_log;
     }
-
 };
 
-class Logger1{ public:
-    Logger1(){
 
-    }
-
-};
-using StdCout  = pureLog::ConsoleOut<pureLog::OutputBuffering::UNBUFFERED, pureLog::ConsoleInterface::STD_COUT>;
-
-class Debugger: public pureLog::Logger<Debugger, StdCout>{
-public:
-    friend class pureLog::Logger<Debugger, StdCout>;
+class Debugger: public pureLog::Logger<Debugger>{
+    friend class pureLog::Logger<Debugger>;
 private:
-    Debugger(): pureLog::Logger<Debugger, StdCout>("Debugger"){
-
+    Debugger(): pureLog::Logger<Debugger>("Debugger", pureLog::OutputStream::get<pureLog::StdCout<pureLog::OutputStream::BUFFERED>>()){
     }
 };
 
 int main(){
     Debugger& debugger = Debugger::get();
-    debugger.debug("This is a debug {}.", "message").message(" Additional message content").location().time().send().flush();
-    std::string msg = "Formatted number: {}";
+    for(int i: std::views::iota(0, 1)){
+        debugger.error("Invalid value passed to parser: {}", 3).time();
+        debugger.warn("This is a warning message.").location();
+        debugger.info("Informational message without additional data.");
+        debugger.debug("Debugging value: {}", 42);
+        debugger.critical("Critical error encountered! System will shut down.").time().location();
+    }
     return 0;
 }

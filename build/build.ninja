@@ -105,6 +105,15 @@ build pureLog/CMakeFiles/PureLog.dir/source/fileOut.cpp.obj: CXX_COMPILER__PureL
   OBJECT_FILE_DIR = pureLog\CMakeFiles\PureLog.dir\source
   TARGET_SUPPORT_DIR = pureLog\CMakeFiles\PureLog.dir
 
+build pureLog/CMakeFiles/PureLog.dir/source/outputStream.cpp.obj: CXX_COMPILER__PureLog_unscanned_Debug C$:/Users/blake/Programing/C++$ Projects/Pure$ Log/pureLog/source/outputStream.cpp || cmake_object_order_depends_target_PureLog
+  CONFIG = Debug
+  DEP_FILE = pureLog\CMakeFiles\PureLog.dir\source\outputStream.cpp.obj.d
+  FLAGS = -g -std=c++23
+  INCLUDES = -I"C:/Users/blake/Programing/C++ Projects/Pure Log/include" -I"C:/Users/blake/Programing/C++ Projects/Pure Log/pureLog/header" -I"C:/Users/blake/Programing/C++ Projects/Pure Log/pureLog/source"
+  OBJECT_DIR = pureLog\CMakeFiles\PureLog.dir
+  OBJECT_FILE_DIR = pureLog\CMakeFiles\PureLog.dir\source
+  TARGET_SUPPORT_DIR = pureLog\CMakeFiles\PureLog.dir
+
 
 # =============================================================================
 # Link build statements for STATIC_LIBRARY target PureLog
@@ -113,7 +122,7 @@ build pureLog/CMakeFiles/PureLog.dir/source/fileOut.cpp.obj: CXX_COMPILER__PureL
 #############################################
 # Link the static library C:\Users\blake\Programing\C++ Projects\Pure Log\lib\PureLog.lib
 
-build C$:/Users/blake/Programing/C++$ Projects/Pure$ Log/lib/PureLog.lib: CXX_STATIC_LIBRARY_LINKER__PureLog_Debug pureLog/CMakeFiles/PureLog.dir/source/log.cpp.obj pureLog/CMakeFiles/PureLog.dir/source/consoleOut.cpp.obj pureLog/CMakeFiles/PureLog.dir/source/fileOut.cpp.obj
+build C$:/Users/blake/Programing/C++$ Projects/Pure$ Log/lib/PureLog.lib: CXX_STATIC_LIBRARY_LINKER__PureLog_Debug pureLog/CMakeFiles/PureLog.dir/source/log.cpp.obj pureLog/CMakeFiles/PureLog.dir/source/consoleOut.cpp.obj pureLog/CMakeFiles/PureLog.dir/source/fileOut.cpp.obj pureLog/CMakeFiles/PureLog.dir/source/outputStream.cpp.obj
   CONFIG = Debug
   LANGUAGE_COMPILE_FLAGS = -g
   OBJECT_DIR = pureLog\CMakeFiles\PureLog.dir
