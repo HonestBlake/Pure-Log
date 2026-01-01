@@ -55,3 +55,10 @@ install_manifest.txt
 compile_commands.json
 CTestTestfile.cmake
 _deps
+
+# clangd generated files
+.clangd/
+.clangd
+
+#depricated files
+better Log/
