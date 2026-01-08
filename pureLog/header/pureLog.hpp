@@ -26,6 +26,16 @@ namespace pureLog{
         class Log;
     } // #END: log
 
+    // #NAMESPACE: formats, Inline Module Namespace
+    inline namespace formats{
+        struct Format;
+    } // #END: formats
+
+    // #NAMESPACE: color, Inline Module Namespace
+    inline namespace color{
+        namespace ansiColors{}
+    } // #END: color
+
     // #NAMESPACE: outputStream, Inline Module Namespace
     inline namespace outputStream{
         enum class OutputBuffering: std::uint8_t;

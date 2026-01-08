@@ -12,7 +12,7 @@ namespace pureLog::log{ // #scope: pureLog::log
 
         // #ENUM: Log::Level, std::uint8_t Enum Class
         enum class Level: std::uint8_t{
-            LOG,
+            NONE,
             INFO,
             WARN,
             ERROR,
@@ -21,19 +21,11 @@ namespace pureLog::log{ // #scope: pureLog::log
             TRACE,
             DEBUG
         }; // #END: log::Level
-
-        // #ENUM: Log::Format, std::uint8_t Enum Class
-        enum class Format: std::uint8_t{
-            NAME,
-            TIME,
-            LEVEL,
-            MESSAGE,
-            LOCATION
-        }; // #END: Log::Format
-
+        
     // Public Factory Methods
         Log();
-        explicit Log(Level p_level);
+        explicit Log(const std::variant<Log::Level, std::string> p_level);
+        explicit Log(std::variant<Log::Level, std::string>&& p_level);
         Log(const Log&) = default; // #DEFAULT: Log(const Log&), Default Copy Constructor
         Log(Log&&) = default; // #DEFAULT: Log(Log&&), Default Move Constructor
         ~Log() = default; // #DEFAULT: ~Log(), Default Destructor
@@ -41,14 +33,7 @@ namespace pureLog::log{ // #scope: pureLog::log
         Log& operator=(const Log&) = default; // #DEFAULT: operator=(const Log&), Default Copy Assignment Operator
         Log& operator=(Log&&) = default; // #DEFAULT: operator=(Log&&), Default Move Assignment Operator
     // Public Static Members
-        static inline constexpr std::uint8_t NUM_FORMATS = 5;
-        static inline constexpr std::string FORMAT_SEPARATOR = " ";
-        static inline constexpr std::string LOG_END = "\n";
-        static inline constexpr std::string LEVEL_FORMAT = "{}:";
-        static inline constexpr std::string NAME_FORMAT = "[{}]";
-        static inline constexpr std::string TIME_FORMAT = "({}:{}:{})";
-        static inline const std::string LOCATION_FORMAT = "| {}, Line: {} {}";
-        static inline const std::map<Level, std::string> LEVEL_STRINGS = {
+        static inline const std::unordered_map<Level, std::string> LEVEL_STRINGS = {
             {Level::INFO, "Info"},
             {Level::WARN, "Warn"},
             {Level::ERROR, "Error"},
@@ -57,15 +42,8 @@ namespace pureLog::log{ // #scope: pureLog::log
             {Level::TRACE, "Trace"},
             {Level::DEBUG, "Debug"}
         };
-        static inline constexpr std::array<Format, NUM_FORMATS> DEFAULT_FORMAT = {
-            Log::Format::NAME,
-            Log::Format::TIME,
-            Log::Format::LEVEL,
-            Log::Format::MESSAGE,
-            Log::Format::LOCATION
-        };
     // Public Members
-        Level level;
+        std::variant<Level, std::string> level; // Built-In Level or custom level string
         std::string message;
         std::optional<std::source_location> location;
         std::optional<std_TimePoint> time;

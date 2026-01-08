@@ -1,3 +1,4 @@
+#include "colors.hpp"
 #include <pureLog/pureLog.hpp>
 
 class Output: public pureLog::BufferedOutputStream{
@@ -15,6 +16,11 @@ class Debugger: public pureLog::Logger<Debugger>{
     friend class pureLog::Logger<Debugger>;
 private:
     Debugger(): pureLog::Logger<Debugger>("Debugger", pureLog::OutputStream::get<pureLog::StdCout<pureLog::OutputStream::BUFFERED>>()){
+    }
+public:
+    Debugger& special(){
+        initiateLog("Special", "This is a special log message!");
+        return *this;
     }
 };
 
@@ -36,13 +42,23 @@ private:
 };
 
 int main(){
-    FileLogger& debugger = FileLogger::get();
-    for(int i: std::views::iota(0, 1)){
-        debugger.error("Invalid value passed to parser: {}", 3).time();
+    Debugger& debugger = Debugger::get();
+    // debugger.colorFormatWarnName();
+    debugger.formatNameColor(pureLog::Color::WHITE);
+    debugger.formatLogColor(pureLog::Color::BRIGHT_RED);
+    debugger.formatLocationColor(pureLog::Color::UNDERLINE_RED);
+    debugger.formatTimeColor(pureLog::Color::WHITE);
+    debugger.formatLevelColor(pureLog::Color::BOLD_RED);
+    debugger.addLevelFormatMessage("Special", "[SPECIAL LOG]: {}");
+    for(int i: std::views::iota(0, 2)){
+        debugger.log("Invalid value passed to parser: {}", 3).time();
         debugger.warn("This is a warning message.").location();
         debugger.info("Informational message without additional data.");
-        debugger.debug("Debugging value: {}", 42);
+        debugger.debug("Debugging value: {}");
         debugger.critical("Critical error encountered! System will shut down.").time().location();
+        debugger.special();
+        debugger.trace("hi").location();
+        debugger.flush().formatTime("<{}:{}:{}:{}>");
     }
     return 0;
 }

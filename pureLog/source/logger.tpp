@@ -2,6 +2,7 @@
 
 #pragma once
 
+#include "colors.hpp"
 #include "logger.hpp" // #INCLUDE: logger.hpp, Module Header File
 #include <format>
 #include <string>
@@ -33,21 +34,21 @@ namespace pureLog::logger{ // #scope: pureLog::logger
     // #FUNCTION: log(), Method
     template<class T_Derived> 
     T_Derived& Logger<T_Derived>::log(){
-        initiateLog(Log::Level::LOG);
+        initiateLog(Log::Level::NONE);
         return static_cast<T_Derived&>(*this);
     } // #END: log()
 
     // #FUNCTION: log<..T_Args>(const std::string&), Method
     template<class T_Derived>
     template<class... T_Args> T_Derived& Logger<T_Derived>::log(const std::string& p_message, T_Args... p_args){
-        initiateLog(Log::Level::LOG, p_message, p_args...);
+        initiateLog(Log::Level::NONE, p_message, p_args...);
         return static_cast<T_Derived&>(*this);
     } // #END: log<..T_Args>(const std::string&)
 
     // #FUNCTION: log(std::string&&), Method
     template<class T_Derived>
     T_Derived& Logger<T_Derived>::log(std::string&& p_message){
-        initiateLog(Log::Level::LOG, std::move(p_message));
+        initiateLog(Log::Level::NONE, std::move(p_message));
         return static_cast<T_Derived&>(*this);
     } // #END: log(std::string&&)
 
@@ -284,18 +285,301 @@ namespace pureLog::logger{ // #scope: pureLog::logger
         return static_cast<T_Derived&>(*this);
     } // #END: flush()
 
-    // #FUNCTION: logFormat(const std::array<Format, FORMAT_COUNT>&), Method
+    // #FUNCTION: format(const Format&), Method
     template<class T_Derived>
-    T_Derived& Logger<T_Derived>::logFormat(const std::array<Log::Format, Log::NUM_FORMATS>& p_logFormat){
-        m_logFormat = p_logFormat;
+    T_Derived& Logger<T_Derived>::format(const Format& p_format){
+        m_format = p_format;
         return static_cast<T_Derived&>(*this);
-    } // #END: logFormat(const std::array<Format, FORMAT_COUNT>&)
+    } // #END: format(const Format&)
+
+    // #FUNCTION: format(Format&&), Method
+    template<class T_Derived>
+    T_Derived& Logger<T_Derived>::format(Format&& p_format){
+        m_format = std::move(p_format);
+        return static_cast<T_Derived&>(*this);
+    } // #END: format(Format&&)
+
+    // #FUNCTION: formatName(const std::string&), Method
+    template<class T_Derived>
+    T_Derived& Logger<T_Derived>::formatName(const std::string& p_name){
+        m_format.name = p_name;
+        return static_cast<T_Derived&>(*this);
+    } // #END: formatName(const std::string&)
+
+    // #FUNCTION: formatName(std::string&&), Method
+    template<class T_Derived>
+    T_Derived& Logger<T_Derived>::formatName(std::string&& p_name){
+        m_format.name = std::move(p_name);
+        return static_cast<T_Derived&>(*this);
+    } // #END: formatName(std::string&&)
+
+    // #FUNCTION: formatLevel(const std::string&), Method
+    template<class T_Derived>
+    T_Derived& Logger<T_Derived>::formatLevel(const std::string& p_level){
+        m_format.level = p_level;
+        return static_cast<T_Derived&>(*this);
+    } // #END: formatLevel(const std::string&)
+
+    // #FUNCTION: formatLevel(std::string&&), Method
+    template<class T_Derived>
+    T_Derived& Logger<T_Derived>::formatLevel(std::string&& p_level){
+        m_format.level = std::move(p_level);
+        return static_cast<T_Derived&>(*this);
+    } // #END: formatLevel(std::string&&)
+
+    // #FUNCTION: formatMessage(const std::string&), Method
+    template<class T_Derived>
+    T_Derived& Logger<T_Derived>::formatMessage(const std::string& p_message){
+        m_format.message = p_message;
+        return static_cast<T_Derived&>(*this);
+    } // #END: formatMessage(const std::string&)
+
+    // #FUNCTION: formatMessage(std::string&&), Method
+    template<class T_Derived>
+    T_Derived& Logger<T_Derived>::formatMessage(std::string&& p_message){
+        m_format.message =  std::move(p_message);
+        return static_cast<T_Derived&>(*this);
+    } // #END: formatMessage(std::string&&)
+
+    // #FUNCTION: formatTime(const std::string&), Method
+    template<class T_Derived>
+    T_Derived& Logger<T_Derived>::formatTime(const std::string& p_time){
+        m_format.time = p_time;
+        return static_cast<T_Derived&>(*this);
+    } // #END: formatTime(const std::string&)
+
+    // #FUNCTION: formatTime(std::string&&), Method
+    template<class T_Derived>
+    T_Derived& Logger<T_Derived>::formatTime(std::string&& p_time){
+        m_format.time = std::move(p_time);
+        return static_cast<T_Derived&>(*this);
+    } // #END: formatTime(std::string&&)
+
+    // #FUNCTION: formatLocation(const std::string&), Method
+    template<class T_Derived>
+    T_Derived& Logger<T_Derived>::formatLocation(const std::string& p_location){
+        m_format.location = p_location;
+        return static_cast<T_Derived&>(*this);
+    } // #END: formatLocation(const std::string&)
+
+    // #FUNCTION: formatLocation(std::string&&), Method
+    template<class T_Derived>
+    T_Derived& Logger<T_Derived>::formatLocation(std::string&& p_location){
+        m_format.location = std::move(p_location);
+        return static_cast<T_Derived&>(*this);
+    } // #END: formatLocation(std::string&&)
+
+    // #FUNCTION: formatOrder(const std::array<Format::Type, Format::COUNT>&), Method
+    template<class T_Derived>
+    T_Derived& Logger<T_Derived>::formatOrder(const std::array<Format::Type, Format::COUNT>& p_order){
+        m_format.order = p_order;
+        return static_cast<T_Derived&>(*this);
+    } // #END: formatOrder(const std::array<Format::Type, Format::COUNT>&)
+
+    // #FUNCTION: formatOrder(const std::initializer_list<Format::Type>), Method
+    template<class T_Derived>
+    T_Derived& Logger<T_Derived>::formatOrder(const std::initializer_list<Format::Type> p_order){
+        std::copy(p_order.begin(), p_order.end(), m_format.order.begin());
+        return static_cast<T_Derived&>(*this);
+    } // #END: formatOrder(const std::initializer_list<Format::Type>)
+
+    // #FUNCTION: addLevelFormat(const std::variant<Log::Level, std::string>&, const Format&), Method
+    template<class T_Derived>
+    T_Derived& Logger<T_Derived>::addLevelFormat(const std::variant<Log::Level, std::string>& p_level, const Format& p_format){
+        m_levelFormats[p_level] = p_format;
+        return static_cast<T_Derived&>(*this);
+    } // #END: addLevelFormat(const std::variant<Log::Level, std::string>&)
+
+    // #FUNCTION: addLevelFormat(const std::variant<Log::Level, std::string>&, Format&&), Method
+    template<class T_Derived>
+    T_Derived& Logger<T_Derived>::addLevelFormat(const std::variant<Log::Level, std::string>& p_level, Format&& p_format){
+        m_levelFormats[p_level] = std::move(p_format);
+        return static_cast<T_Derived&>(*this);
+    } // #END: addLevelFormat(const std::variant<Log::Level, std::string>&, Format&&)
+
+    // #FUNCTION: addLevelFormatName(const std::variant<Log::Level, std::string>&, const std::string&), Method
+    template<class T_Derived>
+    T_Derived& Logger<T_Derived>::addLevelFormatName(const std::variant<Log::Level, std::string>& p_level, const std::string& p_name){
+        m_levelFormats[p_level].name = p_name;
+        return static_cast<T_Derived&>(*this);
+    } // #END: addLevelFormatName(const std::variant<Log::Level, std::string>&, const std::string&)
+
+    // #FUNCTION: addLevelFormatName(const std::variant<Log::Level, std::string>&, std::string&&), Method
+    template<class T_Derived>
+    T_Derived& Logger<T_Derived>::addLevelFormatName(const std::variant<Log::Level, std::string>& p_level, std::string&& p_name){
+        m_levelFormats[p_level].name = std::move(p_name);
+        return static_cast<T_Derived&>(*this);
+    } // #END: addLevelFormatName(const std::variant<Log::Level, std::string>&, std::string&&)
+
+    // #FUNCTION: addLevelFormatLevel(const std::variant<Log::Level, std::string>&, const std::string&), Method
+    template<class T_Derived>
+    T_Derived& Logger<T_Derived>::addLevelFormatLevel(const std::variant<Log::Level, std::string>& p_level, const std::string& p_levelFormat){
+        m_levelFormats[p_level].level = p_levelFormat;
+        return static_cast<T_Derived&>(*this);
+    } // #END: addLevelFormatLevel(const std::variant<Log::Level, std::string>&, const std::string&)
+
+    // #FUNCTION: addLevelFormatLevel(const std::variant<Log::Level, std::string>&, std::string&&), Method
+    template<class T_Derived>
+    T_Derived& Logger<T_Derived>::addLevelFormatLevel(const std::variant<Log::Level, std::string>& p_level, std::string&& p_levelFormat){
+        m_levelFormats[p_level].level = std::move(p_levelFormat);
+        return static_cast<T_Derived&>(*this);
+    } // #END: addLevelFormatLevel(const std::variant<Log::Level, std::string>&, std::string&&)
+
+    // #FUNCTION: addLevelFormatMessage(const std::variant<Log::Level, std::string>&, const std::string&), Method
+    template<class T_Derived>
+    T_Derived& Logger<T_Derived>::addLevelFormatMessage(const std::variant<Log::Level, std::string>& p_level, const std::string& p_message){
+        m_levelFormats[p_level].message = p_message;
+        return static_cast<T_Derived&>(*this);
+    } // #END: addLevelFormatMessage(const std::variant<Log::Level, std::string>&, const std::string&)
+
+    // #FUNCTION: addLevelFormatMessage(const std::variant<Log::Level, std::string>&, std::string&&), Method
+    template<class T_Derived>
+    T_Derived& Logger<T_Derived>::addLevelFormatMessage(const std::variant<Log::Level, std::string>& p_level, std::string&& p_message){
+        m_levelFormats[p_level].message = std::move(p_message);
+        return static_cast<T_Derived&>(*this);
+    } // #END: addLevelFormatMessage(const std::variant<Log::Level, std::string>&, std::string&&)
+
+    // #FUNCTION: addLevelFormatTime(const std::variant<Log::Level, std::string>&, const std::string&), Method
+    template<class T_Derived>
+    T_Derived& Logger<T_Derived>::addLevelFormatTime(const std::variant<Log::Level, std::string>& p_level, const std::string& p_time){
+        m_levelFormats[p_level].time = p_time;
+        return static_cast<T_Derived&>(*this);
+    } // #END: addLevelFormatTime(const std::variant<Log::Level, std::string>&, const std::string&)
+
+    // #FUNCTION: addLevelFormatTime(const std::variant<Log::Level, std::string>&, std::string&&), Method
+    template<class T_Derived>
+    T_Derived& Logger<T_Derived>::addLevelFormatTime(const std::variant<Log::Level, std::string>& p_level, std::string&& p_time){
+        m_levelFormats[p_level].time = std::move(p_time);
+        return static_cast<T_Derived&>(*this);
+    } // #END: addLevelFormatTime(const std::variant<Log::Level, std::string>&, std::string&&)
+
+    // #FUNCTION: addLevelFormatLocation(const std::variant<Log::Level, std::string>&, const std::string&), Method
+    template<class T_Derived>
+    T_Derived& Logger<T_Derived>::addLevelFormatLocation(const std::variant<Log::Level, std::string>& p_level, const std::string& p_location){
+        m_levelFormats[p_level].location = p_location;
+        return static_cast<T_Derived&>(*this);
+    } // #END: addLevelFormatLocation(const std::variant<Log::Level, std::string>&, const std::string&)
+
+    // #FUNCTION: addLevelFormatLocation(const std::variant<Log::Level, std::string>&, std::string&&), Method
+    template<class T_Derived>
+    T_Derived& Logger<T_Derived>::addLevelFormatLocation(const std::variant<Log::Level, std::string>& p_level, std::string&& p_location){
+        m_levelFormats[p_level].location = std::move(p_location);
+        return static_cast<T_Derived&>(*this);
+    } // #END: addLevelFormatLocation(const std::variant<Log::Level, std::string>&, std::string&&)
+
+    // #FUNCTION: addLevelFormatOrder(const std::variant<Log::Level, std::string>&, const std::array<Format::Type, Format::COUNT>&), Method
+    template<class T_Derived>
+    T_Derived& Logger<T_Derived>::addLevelFormatOrder(const std::variant<Log::Level, std::string>& p_level, const std::array<Format::Type, Format::COUNT>& p_order){
+        m_levelFormats[p_level].order = p_order;
+        return static_cast<T_Derived&>(*this);
+    } // #END: addLevelFormatOrder(const std::variant<Log::Level, std::string>&, const std::array<Format::Type, Format::COUNT>&)
+    
+    // #FUNCTION: addLevelFormatOrder(const std::variant<Log::Level, std::string>&, const std::initializer_list<Format::Type>), Method
+    template<class T_Derived>
+    T_Derived& Logger<T_Derived>::addLevelFormatOrder(const std::variant<Log::Level, std::string>& p_level, const std::initializer_list<Format::Type> p_order){
+        std::copy(p_order.begin(), p_order.end(), m_levelFormats[p_level].order.begin());
+        return static_cast<T_Derived&>(*this);
+    } // #END: addLevelFormatOrder(const std::variant<Log::Level, std::string>&, const std::initializer_list<Format::Type>)
+
+
+    // !
+    
+    // #FUNCTION: formatColor(const Format::TextColor&), Method
+    template<class T_Derived>
+    T_Derived& Logger<T_Derived>::formatColor(const Format::TextColor& p_color){
+        m_format.color = p_color;
+        return static_cast<T_Derived&>(*this);
+    } // #END: formatColor(const Format::TextColor&)
+
+    // #FUNCTION: formatColor(Format::TextColor&&), Method
+    template<class T_Derived>
+    T_Derived& Logger<T_Derived>::formatColor(Format::TextColor&& p_color){
+        m_format.color = std::move(p_color);
+        return static_cast<T_Derived&>(*this);
+    } // #END: formatColor(Format::TextColor&&)
+
+    // #FUNCTION: formatLogColor(const Color), Method
+    template<class T_Derived>
+    T_Derived& Logger<T_Derived>::formatLogColor(const Color p_color){
+        m_format.color.log = p_color;
+        return static_cast<T_Derived&>(*this);
+    } // #END: formatLogColor(const Color)
+
+    // #FUNCTION: formatNameColor(const Color), Method
+    template<class T_Derived>
+    T_Derived& Logger<T_Derived>::formatNameColor(const Color p_color){
+        m_format.color.name = p_color;
+        return static_cast<T_Derived&>(*this);
+    } // #END: formatNameColor(const Color)
+
+    // #FUNCTION: formatLevelColor(const Color), Method
+    template<class T_Derived>
+    T_Derived& Logger<T_Derived>::formatLevelColor(const Color p_color){
+        m_format.color.level = p_color;
+        return static_cast<T_Derived&>(*this);
+    } // #END: formatLevelColor(const Color)
+
+    // #FUNCTION: formatMessageColor(const Color), Method
+    template<class T_Derived>
+    T_Derived& Logger<T_Derived>::formatMessageColor(const Color p_color){
+        m_format.color.message = p_color;
+        return static_cast<T_Derived&>(*this);
+    } // #END: formatMessageColor(const Color)
+
+    // #FUNCTION: formatTimeColor(const Color), Method
+    template<class T_Derived>
+    T_Derived& Logger<T_Derived>::formatTimeColor(const Color p_color){
+        m_format.color.time = p_color;
+        return static_cast<T_Derived&>(*this);
+    } // #END: formatTimeColor(const Color)
+
+    // #FUNCTION: formatLocationColor(const Color), Method
+    template<class T_Derived>
+    T_Derived& Logger<T_Derived>::formatLocationColor(const Color p_color){
+        m_format.color.location = p_color;
+        return static_cast<T_Derived&>(*this);
+    } // #END: formatLocationColor(const Color)
+
+    // #FUNCTION: name(const std::string&), Method
+
+    //!
+
+    template<class T_Derived>
+    T_Derived& Logger<T_Derived>::name(const std::string& p_name){
+        m_name = p_name;
+        return static_cast<T_Derived&>(*this);
+    } // #END: name(const std::string&)
+
+    // #FUNCTION: name(std::string&&), Method
+    template<class T_Derived>
+    T_Derived& Logger<T_Derived>::name(std::string&& p_name){
+        m_name = std::move(p_name);
+        return static_cast<T_Derived&>(*this);
+    } // #END: name(std::string&&)
+
+    // #FUNCTION: format(), Method
+    template<class T_Derived>
+    [[nodiscard]] const Format& Logger<T_Derived>::format()const{
+        return m_format;
+    } // #END: format()
+
+    // #FUNCTION: levelFormats(), Method
+    template<class T_Derived>
+    [[nodiscard]] const std::unordered_map<std::variant<Log::Level, std::string>, Format>& Logger<T_Derived>::levelFormats()const{
+        return m_levelFormats;
+    } // #END: levelFormats()
+
+    // #FUNCTION: name(), Method
+    template<class T_Derived>
+    [[nodiscard]] const std::string& Logger<T_Derived>::name()const{
+        return m_name;
+    } // #END: name()
 
 // #DIV: Protected Factory Methods
 
     // #FUNCTION: Logger(const std::string&), Constructor
     template<class T_Derived> 
-    Logger<T_Derived>::Logger(const std::string& p_name, OutputStream& p_outputStream): m_name(p_name), m_outputStream(p_outputStream), m_logFormat(Log::DEFAULT_FORMAT){
+    Logger<T_Derived>::Logger(const std::string& p_name, OutputStream& p_outputStream): m_name(p_name), m_outputStream(p_outputStream){
         
     } // #END: Logger(const std::string&)
 
@@ -303,17 +587,17 @@ namespace pureLog::logger{ // #scope: pureLog::logger
 
     // #FUNCTION: initiateLog(Log::Level), Method
     template<class T_Derived>
-    void Logger<T_Derived>::initiateLog(Log::Level p_level){
+    void Logger<T_Derived>::initiateLog(const std::variant<Log::Level, std::string> p_level){
         if(m_bufferedLog){
             flushBuffer();
         }
-        m_bufferedLog = Log(p_level);
+        m_bufferedLog = Log(std::move(p_level));
     } // #END: initiateLog(Log::Level)
 
     // #FUNCTION: initiateLog<...T_Args>(Log::Level, const std::string&, Args&&...), Method
     template<class T_Derived>
-    template<class... T_Args> void Logger<T_Derived>::initiateLog(Log::Level p_level, const std::string& p_message, T_Args... p_args){
-        initiateLog(p_level);
+    template<class... T_Args> void Logger<T_Derived>::initiateLog(const std::variant<Log::Level, std::string> p_level, const std::string& p_message, T_Args... p_args){
+        initiateLog(std::move(p_level));
         if constexpr(sizeof...(p_args) == 0){ // No formatting arguments
             m_bufferedLog->message = p_message;
         }else{
@@ -323,8 +607,8 @@ namespace pureLog::logger{ // #scope: pureLog::logger
 
     // #FUNCTION: initiateLog(Log::Level, std::string&&, Args&&...), Method
     template<class T_Derived>
-    void Logger<T_Derived>::initiateLog(Log::Level p_level, std::string&& p_message){
-        initiateLog(p_level);
+    void Logger<T_Derived>::initiateLog(const std::variant<Log::Level, std::string> p_level, std::string&& p_message){
+        initiateLog(std::move(p_level));
         m_bufferedLog->message = std::move(p_message);
     } // #END: initiateLog(Log::Level, std::string&&, Args&&...)
 
@@ -332,78 +616,120 @@ namespace pureLog::logger{ // #scope: pureLog::logger
     template<class T_Derived>    
     void Logger<T_Derived>::flushBuffer(){
         if(m_bufferedLog){
-            m_outputStream << formatLog(*m_bufferedLog);
+            m_outputStream << getColoredLog(m_bufferedLog->level, getFormattedLog(*m_bufferedLog));
             m_bufferedLog.reset();
         }
     } // #END: flushBuffer()
     
-    // #FUNCTION: formatLog(const Log&), Static Method
+    // #FUNCTION: getFormattedLog(const Log&), Static Method
     template<class T_Derived>
-    std::string Logger<T_Derived>::formatLog(const Log& p_log){
+    std::string Logger<T_Derived>::getFormattedLog(const Log& p_log){
         std::string formattedLog;
-        for(Log::Format format: m_logFormat){
-            if(std::string formattedPart = formatPart(format, p_log); !formattedPart.empty()){
-                formattedLog += formattedLog.empty()? formattedPart: Log::FORMAT_SEPARATOR + formattedPart;
+        // Format log parts
+        for(Format::Type format: m_format.order){
+            if(std::string formattedPart = getFormattedPart(format, p_log); !formattedPart.empty()){
+                if(!formattedLog.empty()){ // Not first part
+                    formattedLog += Format::SEPARATOR;
+                }
+                formattedLog += getColoredPart(format, std::move(formattedPart));
             }
         }
-        return formattedLog + Log::LOG_END;
-    } // #END: formatLog(const Log&)
+        return formattedLog + Format::LOG_END;
+    } // #END: getFormattedLog(const Log&)
 
-    // #FUNCTION: formatPart(const Log::Format, const Log&), Method
+    // #FUNCTION: getFormattedPart(const Log::Format, const Log&), Method
     template<class T_Derived>
-    std::string Logger<T_Derived>::formatPart(const Log::Format p_format, const Log& p_log){
+    std::string Logger<T_Derived>::getFormattedPart(const Format::Type p_format, const Log& p_log){
         switch(p_format){
-            case Log::Format::TIME: {
-                if(p_log.time) return formatTime(*p_log.time);
-                else return "";
-            }
-            case Log::Format::LEVEL: return formatLevel(p_log.level);
-            case Log::Format::NAME: return formatName(m_name);
-            case Log::Format::MESSAGE: return formatMessage(p_log.message);
-            case Log::Format::LOCATION: {
-                if(p_log.location) return formatLocation(*p_log.location);
-                else return "";
-            }
+            case Format::Type::TIME: return (p_log.time)? getFormattedTime(p_log.level, *p_log.time): "";
+            case Format::Type::LEVEL: return getFormattedLevel(p_log.level);
+            case Format::Type::NAME: return getFormattedName(p_log.level, m_name);
+            case Format::Type::MESSAGE: return getFormattedMessage(p_log.level, p_log.message);
+            case Format::Type::LOCATION: return (p_log.location)? getFormattedLocation(p_log.level, *p_log.location): "";
             default: return "";
         }
-    } // #END: formatPart(const Log::Format, const Log&)
+    } // #END: getFormattedPart(const Log::Format, const Log&)
 
-    // #FUNCTION: formatName(const std::string&), Method
+    // #FUNCTION: getFormattedName(const std::variant<Log::Level, std::string>&, const std::string&), Method
     template<class T_Derived>
-    std::string Logger<T_Derived>::formatName(const std::string& p_name){
-        return std::vformat(Log::NAME_FORMAT, std::make_format_args(p_name));
-    } // #END: formatName(const std::string&)
+    std::string Logger<T_Derived>::getFormattedName(const std::variant<Log::Level, std::string>& p_level, const std::string& p_name){
+        if(auto node = m_levelFormats.find(p_level); node != m_levelFormats.end()) [[unlikely]] { // Specific format for this level
+            const Format& levelFormat = node->second;
+            return std::vformat(levelFormat.name, std::make_format_args(p_name));
+        }
+        return std::vformat(m_format.name, std::make_format_args(p_name));
+    } // #END: getFormattedName(const std::variant<Log::Level, std::string>&, const std::string&)
 
-    // #FUNCTION: formatMessage(const std::string&), Method
+    // #FUNCTION: getFormattedMessage(const std::variant<Log::Level, std::string>&, const std::string&), Method
     template<class T_Derived>
-    std::string Logger<T_Derived>::formatMessage(const std::string& p_message){
-        return p_message;
-    } // #END: formatMessage(const std::string&)
+    std::string Logger<T_Derived>::getFormattedMessage(const std::variant<Log::Level, std::string>& p_level, const std::string& p_message){
+        if(auto node = m_levelFormats.find(p_level); node != m_levelFormats.end()) [[unlikely]] { // Specific format for this level
+            const Format& levelFormat = node->second;
+            return std::vformat(levelFormat.message, std::make_format_args(p_message));
+        }
+        return std::vformat(m_format.message, std::make_format_args(p_message));
+    } // #END: getFormattedMessage(const std::variant<Log::Level, std::string>&, const std::string&)
 
-    // #FUNCTION: formatLevel(const Log::Level), Method
+    // #FUNCTION: getFormattedLevel(const std::variant<Log::Level, std::string>&), Method
     template<class T_Derived>
-    std::string Logger<T_Derived>::formatLevel(const Log::Level p_level){
-        return std::vformat(Log::LEVEL_FORMAT, std::make_format_args(Log::LEVEL_STRINGS.at(p_level)));
-    } // #END: formatLevel(const Log::Level)
+    std::string Logger<T_Derived>::getFormattedLevel(const std::variant<Log::Level, std::string>& p_level){
+        if(std::holds_alternative<std::string>(p_level)) [[unlikely]] { // Custom level string
+            if(auto node = m_levelFormats.find(p_level); node != m_levelFormats.end()) [[unlikely]] { // Specific format for this level
+                const Format& levelFormat = node->second;
+                return std::vformat(levelFormat.level, std::make_format_args(std::get<std::string>(p_level)));
+            }
+            return std::vformat(m_format.level, std::make_format_args(std::get<std::string>(p_level)));
+        }
+        if(std::get<Log::Level>(p_level) == Log::Level::NONE){ // No level to display
+            return "";
+        }
+        if(auto node = m_levelFormats.find(p_level); node != m_levelFormats.end()) [[unlikely]] { // Specific format for this level
+            const Format& levelFormat = node->second;
+            return std::vformat(levelFormat.level, std::make_format_args(Log::LEVEL_STRINGS.at(std::get<Log::Level>(p_level))));
+        }
+        return std::vformat(m_format.level, std::make_format_args(Log::LEVEL_STRINGS.at(std::get<Log::Level>(p_level))));
+    } // #END: getFormattedLevel(const std::variant<Log::Level, std::string>&)
 
-    // #FUNCTION: formatTime(const std_TimePoint&), Method
+    // #FUNCTION: getFormattedTime(const std::variant<Log::Level, std::string>&, const std_TimePoint&), Method
     template<class T_Derived>
-    std::string Logger<T_Derived>::formatTime(const std_TimePoint& p_time){
+    std::string Logger<T_Derived>::getFormattedTime(const std::variant<Log::Level, std::string>& p_level, const std_TimePoint& p_time){
+        // Convert time
         const std::uint8_t hours = std::chrono::duration_cast<std::chrono::hours>(p_time.time_since_epoch()).count() % 24;
         const std::uint8_t minutes = std::chrono::duration_cast<std::chrono::minutes>(p_time.time_since_epoch()).count() % 60;
         const std::uint8_t seconds = std::chrono::duration_cast<std::chrono::seconds>(p_time.time_since_epoch()).count() % 60;
-        return std::vformat(Log::TIME_FORMAT, std::make_format_args(hours, minutes, seconds));
-    } // #END: formatTime(const std_TimePoint&)
+        const std::uint16_t milliseconds = std::chrono::duration_cast<std::chrono::milliseconds>(p_time.time_since_epoch()).count() % 1000;
+        if(auto node = m_levelFormats.find(p_level); node != m_levelFormats.end()) [[unlikely]] { // Specific format for this level
+            const Format& levelFormat = node->second;
+            return std::vformat(levelFormat.time, std::make_format_args(hours, minutes, seconds, milliseconds));
+        }
+        return std::vformat(m_format.time, std::make_format_args(hours, minutes, seconds, milliseconds));
+    } // #END: getFormattedTime(const std::variant<Log::Level, std::string>&, const std_TimePoint&)
 
-    // #FUNCTION: formatLocation(const std::source_location&), Method
+    // #FUNCTION: getFormattedLocation(const std::variant<Log::Level, std::string>&, const std::source_location&), Method
     template<class T_Derived>
-    std::string Logger<T_Derived>::formatLocation(const std::source_location& p_location){
-        const char* function = p_location.function_name();
+    std::string Logger<T_Derived>::getFormattedLocation(const std::variant<Log::Level, std::string>& p_level, const std::source_location& p_location){
+        // Get location components
+        const std::string function = p_location.function_name();
         const std::uint32_t line = p_location.line();
-        const char* file = p_location.file_name();
-        return std::vformat(Log::LOCATION_FORMAT, std::make_format_args(function, line, file));
-    } // #END: formatLocation(const std::source_location&)
+        const std::string file = p_location.file_name();
+        if(auto node = m_levelFormats.find(p_level); node != m_levelFormats.end()) [[unlikely]] { // Specific format for this level
+            const Format& levelFormat = node->second;
+            return std::vformat(levelFormat.location, std::make_format_args(function, line, file));
+        }
+        return std::vformat(m_format.location, std::make_format_args(function, line, file));
+    } // #END: getFormattedLocation(const std::variant<Log::Level, std::string>&, const std::source_location&)
 
+    // #FUNCTION: getColoredPart(const Log::Format, std::string&&), Method
+    template<class T_Derived>
+    std::string Logger<T_Derived>::getColoredPart(const Format::Type p_format, std::string&& p_part){
+        return std::move(p_part);
+    } // #END: getColoredPart(const Log::Format, std::string&&)
+
+    // #FUNCTION: getColoredLog(const std::variant<Log::Level, std::string>&, std::string&&), Method
+    template<class T_Derived>
+    std::string Logger<T_Derived>::getColoredLog(const std::variant<Log::Level, std::string>& p_level, std::string&& p_log){
+        return std::move(p_log);
+    } // #END: getColoredLog(const std::variant<Log::Level, std::string>&, std::string&&)
 // #END: Logger<T_Derived>
 
 } // #END: pureLog::logger
