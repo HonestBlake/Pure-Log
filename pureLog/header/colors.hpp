@@ -1,10 +1,37 @@
-// #FILE: color.hpp, Module Header File
+// #FILE: colors.hpp, Module Header File
 
 #pragma once
 
 #include "pureLog.hpp" // #INCLUDE: pureLog.hpp, Project Header File
 
-namespace pureLog::color{ // #scope: pureLog::color
+
+
+        // // #STRUCT: TextColor, Struct
+        // struct TextColor{
+        // // Factory Methods
+        //     TextColor() = default; // #DEFAULT: TextColor(), Default Constructor
+        //     TextColor(const TextColor&) = default; // #DEFAULT: TextColor(const TextColor&), Default Copy Constructor
+        //     TextColor(TextColor&&) = default; // #DEFAULT: TextColor(TextColor&&), Default Move Constructor
+        //     ~TextColor() = default; // #DEFAULT: ~TextColor(), Default Destructor
+        // // Operators
+        //     TextColor& operator=(const TextColor&) = default; // #DEFAULT: operator=(const TextColor&), Default Copy Assignment Operator
+        //     TextColor& operator=(TextColor&&) = default; // #DEFAULT: operator=(TextColor&&), Default Move Assignment Operator
+        // // Members
+        //     std::optional<Color> log;
+        //     std::optional<Color> name;
+        //     std::optional<Color> level;
+        //     std::optional<Color> message;
+        //     std::optional<Color> time;
+        //     std::optional<Color> location;
+        // }; // #END: TextColor
+
+
+namespace pureLog::colors{ // #scope: pureLog::colors
+
+    // #STRUCT: Coloring, Struct
+    struct Coloring{
+
+    }; // #END: Coloring
 
     // #ENUM: Color, std::uint8_t Enum Class
     enum class Color: std::uint8_t{
@@ -73,7 +100,7 @@ namespace pureLog::color{ // #scope: pureLog::color
         BRIGHT_BACKGROUND_WHITE
     }; // #END: Color
 
-    // #NAMESPACE: ansiColors, Variable Namespace
+    // #NAMESPACE: ansi, Variable Namespace
     namespace ansi{ 
         inline constexpr std::string RESET = "\e[0m";
         // Colors
@@ -205,6 +232,6 @@ namespace pureLog::color{ // #scope: pureLog::color
             {Color::BRIGHT_BACKGROUND_WHITE, BRIGHT_BACKGROUND_WHITE}
         };
             
-    } // #END: ansiColors
+    } // #END: ansi
 
-} // #END: pureLog::color
+} // #END: pureLog::colors

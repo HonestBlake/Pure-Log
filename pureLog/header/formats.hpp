@@ -19,25 +19,6 @@ namespace pureLog::formats{ // #scope: pureLog::format
             MESSAGE,
             LOCATION
         }; // #END: Type
-        
-        // #STRUCT: TextColor, Struct
-        struct TextColor{
-        // Factory Methods
-            TextColor() = default; // #DEFAULT: TextColor(), Default Constructor
-            TextColor(const TextColor&) = default; // #DEFAULT: TextColor(const TextColor&), Default Copy Constructor
-            TextColor(TextColor&&) = default; // #DEFAULT: TextColor(TextColor&&), Default Move Constructor
-            ~TextColor() = default; // #DEFAULT: ~TextColor(), Default Destructor
-        // Operators
-            TextColor& operator=(const TextColor&) = default; // #DEFAULT: operator=(const TextColor&), Default Copy Assignment Operator
-            TextColor& operator=(TextColor&&) = default; // #DEFAULT: operator=(TextColor&&), Default Move Assignment Operator
-        // Members
-            std::optional<Color> log;
-            std::optional<Color> name;
-            std::optional<Color> level;
-            std::optional<Color> message;
-            std::optional<Color> time;
-            std::optional<Color> location;
-        }; // #END: TextColor
 
     // Factory Methods
         Format() = default; // #DEFAULT: Format(), Default Constructor
@@ -70,7 +51,6 @@ namespace pureLog::formats{ // #scope: pureLog::format
         std::string time = TIME;
         std::string location = LOCATION;
         std::array<Type, COUNT> order = DEFAULT_ORDER;
-        TextColor color;
     }; // #END: Format
 
 } // #END: pureLog::format

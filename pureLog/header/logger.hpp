@@ -7,7 +7,7 @@
 #include "outputStream.hpp" // #INCLUDE: outputStream.hpp, Module Header File
 #include "consoleOut.hpp" // #INCLUDE: consoleOut.hpp, Module Header File
 #include "formats.hpp" // #INCLUDE: formats.hpp, Module Header File
-#include <unordered_map>
+#include <string>
 
 namespace pureLog::logger{ // #scope: pureLog::logger
 
@@ -18,7 +18,7 @@ namespace pureLog::logger{ // #scope: pureLog::logger
     // #END: LoggerDerived
 
     // #CLASS: Logger<T_Derived>
-    template<class T_Derived> class Logger{
+    template<class T_Derived, bool t_usingLevelFormats, bool t_usingColors> class Logger{
     public:
     // Public Factory Methods
         virtual ~Logger();
@@ -89,8 +89,8 @@ namespace pureLog::logger{ // #scope: pureLog::logger
         T_Derived& addLevelFormatOrder(const std::variant<Log::Level, std::string>& p_level, const std::initializer_list<Format::Type> p_order);
 
         // Color setters
-        T_Derived& formatColor(const Format::TextColor& p_color);
-        T_Derived& formatColor(Format::TextColor&& p_color);
+        // T_Derived& formatColor(const Format::TextColor& p_color);
+        // T_Derived& formatColor(Format::TextColor&& p_color);
         T_Derived& formatLogColor(const Color p_color);
         T_Derived& formatNameColor(const Color p_color);
         T_Derived& formatLevelColor(const Color p_color);
@@ -109,6 +109,7 @@ namespace pureLog::logger{ // #scope: pureLog::logger
     protected:
     // Protected Factory Methods
         Logger(const std::string& p_name, OutputStream& p_outputStream = OutputStream::get<DefaultOutputStream>());
+        Logger(std::string&& p_name, OutputStream& p_outputStream = OutputStream::get<DefaultOutputStream>());
     // Protected Methods
         void initiateLog(const std::variant<Log::Level, std::string> p_level);
         template<class... T_Args> void initiateLog(const std::variant<Log::Level, std::string> p_level, const std::string& p_message, T_Args... p_args);

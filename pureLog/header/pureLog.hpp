@@ -31,10 +31,10 @@ namespace pureLog{
         struct Format;
     } // #END: formats
 
-    // #NAMESPACE: color, Inline Module Namespace
-    inline namespace color{
-        namespace ansiColors{}
-    } // #END: color
+    // #NAMESPACE: colors, Inline Module Namespace
+    inline namespace colors{
+        namespace ansi{}
+    } // #END: colors
 
     // #NAMESPACE: outputStream, Inline Module Namespace
     inline namespace outputStream{
@@ -45,7 +45,9 @@ namespace pureLog{
 
     // #NAMESPACE: logger, Inline Module Namespace
     inline namespace logger{
-        template<class T_Derived> class Logger;
+        constexpr bool USING_LEVEL_FORMATS = true;
+        constexpr bool USING_COLORS = true;
+        template<class T_Derived, bool t_usingLevelFormats = USING_LEVEL_FORMATS, bool t_usingColors = USING_COLORS> class Logger;
     } // #END: logger
 
     // #NAMESPACE: consoleOut, Inline Module Namespace

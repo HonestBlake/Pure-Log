@@ -44,12 +44,13 @@ private:
 int main(){
     Debugger& debugger = Debugger::get();
     // debugger.colorFormatWarnName();
-    debugger.formatNameColor(pureLog::Color::WHITE);
-    debugger.formatLogColor(pureLog::Color::BRIGHT_RED);
-    debugger.formatLocationColor(pureLog::Color::UNDERLINE_RED);
-    debugger.formatTimeColor(pureLog::Color::WHITE);
-    debugger.formatLevelColor(pureLog::Color::BOLD_RED);
+    // debugger.formatNameColor(pureLog::Color::WHITE);
+    // debugger.formatLogColor(pureLog::Color::BRIGHT_RED);
+    // debugger.formatLocationColor(pureLog::Color::UNDERLINE_RED);
+    // debugger.formatTimeColor(pureLog::Color::WHITE);
+    // debugger.formatLevelColor(pureLog::Color::BOLD_RED);
     debugger.addLevelFormatMessage("Special", "[SPECIAL LOG]: {}");
+    debugger.addLevelFormatLevel("Special", "\"{}\"");
     for(int i: std::views::iota(0, 2)){
         debugger.log("Invalid value passed to parser: {}", 3).time();
         debugger.warn("This is a warning message.").location();
