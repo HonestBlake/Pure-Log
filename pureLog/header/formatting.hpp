@@ -1,14 +1,14 @@
-// #FILE: format.hpp, Module Header File
+// #FILE: formatting.hpp, Module Header File
 
 #pragma once
 
 #include "pureLog.hpp" // #INCLUDE: pureLog.hpp, Project Header File
 #include "colors.hpp" // #INCLUDE: colors.hpp, Module Header File
 
-namespace pureLog::formats{ // #scope: pureLog::format
+namespace pureLog::formats{ // #scope: pureLog::formatting
 
-    // #STRUCT: Format, Struct
-    struct Format{
+    // #STRUCT: Formatting, Struct
+    struct Formatting{
     // Types
 
         // #ENUM: Type, std::uint8_t Enum Class
@@ -21,13 +21,13 @@ namespace pureLog::formats{ // #scope: pureLog::format
         }; // #END: Type
 
     // Factory Methods
-        Format() = default; // #DEFAULT: Format(), Default Constructor
-        Format(const Format&) = default; // #DEFAULT: Format(const Format&), Default Copy Constructor
-        Format(Format&&) = default; // #DEFAULT: Format(Format&&), Default Move Constructor
-        ~Format() = default; // #DEFAULT: ~Format(), Default Destructor
+        Formatting() = default; // #DEFAULT: Formatting(), Default Constructor
+        Formatting(const Formatting&) = default; // #DEFAULT: Formatting(const Formatting&), Default Copy Constructor
+        Formatting(Formatting&&) = default; // #DEFAULT: Formatting(Formatting&&), Default Move Constructor
+        ~Formatting() = default; // #DEFAULT: ~Formatting(), Default Destructor
     // Operators
-        Format& operator=(const Format&) = default; // #DEFAULT: operator=(const Format&), Default Copy Assignment Operator
-        Format& operator=(Format&&) = default; // #DEFAULT: operator=(Format&&), Default Move Assignment Operator
+        Formatting& operator=(const Formatting&) = default; // #DEFAULT: operator=(const Formatting&), Default Copy Assignment Operator
+        Formatting& operator=(Formatting&&) = default; // #DEFAULT: operator=(Formatting&&), Default Move Assignment Operator
     // Static Members
         static inline constexpr std::uint8_t COUNT = 5;
         static inline constexpr std::string SEPARATOR = " ";
@@ -51,7 +51,6 @@ namespace pureLog::formats{ // #scope: pureLog::format
         std::string time = TIME;
         std::string location = LOCATION;
         std::array<Type, COUNT> order = DEFAULT_ORDER;
-    }; // #END: Format
+    }; // #END: Formatting
 
-} // #END: pureLog::format
-
+} // #END: pureLog::formatting

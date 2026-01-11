@@ -1,4 +1,3 @@
-#include "colors.hpp"
 #include <pureLog/pureLog.hpp>
 
 class Output: public pureLog::BufferedOutputStream{
@@ -49,8 +48,15 @@ int main(){
     // debugger.formatLocationColor(pureLog::Color::UNDERLINE_RED);
     // debugger.formatTimeColor(pureLog::Color::WHITE);
     // debugger.formatLevelColor(pureLog::Color::BOLD_RED);
-    debugger.addLevelFormatMessage("Special", "[SPECIAL LOG]: {}");
-    debugger.addLevelFormatLevel("Special", "\"{}\"");
+    debugger.nameColor(pureLog::Color::BRIGHT_CYAN);
+    debugger.levelSpecificLevelColor("Special", pureLog::Color::BRIGHT_PURPLE);
+    debugger.levelSpecificMessageFormat("Special", "[SPECIAL LOG]: {}");
+    debugger.levelSpecificLevelFormat("Special", "\"{}\"");
+    debugger.levelSpecificLogColor("Special", pureLog::Color::BRIGHT_RED);
+    debugger.levelSpecificLogColor(pureLog::Log::Level::WARN, pureLog::Color::YELLOW);
+    debugger.levelSpecificLevelFormat(pureLog::Log::Level::TRACE, "");
+    debugger.levelSpecificLogColor(pureLog::Log::Level::TRACE, pureLog::Color::BRIGHT_GREEN);
+
     for(int i: std::views::iota(0, 2)){
         debugger.log("Invalid value passed to parser: {}", 3).time();
         debugger.warn("This is a warning message.").location();
@@ -59,7 +65,7 @@ int main(){
         debugger.critical("Critical error encountered! System will shut down.").time().location();
         debugger.special();
         debugger.trace("hi").location();
-        debugger.flush().formatTime("<{}:{}:{}:{}>");
+        debugger.flush().timeFormat("<{}:{}:{}:{}>");
     }
     return 0;
 }

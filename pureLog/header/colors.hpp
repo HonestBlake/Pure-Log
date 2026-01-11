@@ -4,34 +4,7 @@
 
 #include "pureLog.hpp" // #INCLUDE: pureLog.hpp, Project Header File
 
-
-
-        // // #STRUCT: TextColor, Struct
-        // struct TextColor{
-        // // Factory Methods
-        //     TextColor() = default; // #DEFAULT: TextColor(), Default Constructor
-        //     TextColor(const TextColor&) = default; // #DEFAULT: TextColor(const TextColor&), Default Copy Constructor
-        //     TextColor(TextColor&&) = default; // #DEFAULT: TextColor(TextColor&&), Default Move Constructor
-        //     ~TextColor() = default; // #DEFAULT: ~TextColor(), Default Destructor
-        // // Operators
-        //     TextColor& operator=(const TextColor&) = default; // #DEFAULT: operator=(const TextColor&), Default Copy Assignment Operator
-        //     TextColor& operator=(TextColor&&) = default; // #DEFAULT: operator=(TextColor&&), Default Move Assignment Operator
-        // // Members
-        //     std::optional<Color> log;
-        //     std::optional<Color> name;
-        //     std::optional<Color> level;
-        //     std::optional<Color> message;
-        //     std::optional<Color> time;
-        //     std::optional<Color> location;
-        // }; // #END: TextColor
-
-
 namespace pureLog::colors{ // #scope: pureLog::colors
-
-    // #STRUCT: Coloring, Struct
-    struct Coloring{
-
-    }; // #END: Coloring
 
     // #ENUM: Color, std::uint8_t Enum Class
     enum class Color: std::uint8_t{
@@ -99,6 +72,25 @@ namespace pureLog::colors{ // #scope: pureLog::colors
         BRIGHT_BACKGROUND_CYAN,
         BRIGHT_BACKGROUND_WHITE
     }; // #END: Color
+
+    // #STRUCT: Coloring, Struct
+    struct Coloring{
+    // Factory Methods
+        Coloring() = default; // #DEFAULT: Coloring(), Default Constructor
+        Coloring(const Coloring&) = default; // #DEFAULT: Coloring(const Coloring&), Default Copy Constructor
+        Coloring(Coloring&&) = default; // #DEFAULT: Coloring(Coloring&&), Default Move Constructor
+        ~Coloring() = default; // #DEFAULT: ~Coloring(), Default Destructor
+    // Operators
+        Coloring& operator=(const Coloring&) = default; // #DEFAULT: operator=(const Coloring&), Default Copy Assignment Operator
+        Coloring& operator=(Coloring&&) = default; // #DEFAULT: operator=(Coloring&&), Default Move Assignment Operator
+    // Members
+        std::optional<Color> log;
+        std::optional<Color> name;
+        std::optional<Color> level;
+        std::optional<Color> message;
+        std::optional<Color> time;
+        std::optional<Color> location;
+    }; // #END: Coloring
 
     // #NAMESPACE: ansi, Variable Namespace
     namespace ansi{ 
@@ -231,7 +223,7 @@ namespace pureLog::colors{ // #scope: pureLog::colors
             {Color::BRIGHT_BACKGROUND_CYAN, BRIGHT_BACKGROUND_CYAN},
             {Color::BRIGHT_BACKGROUND_WHITE, BRIGHT_BACKGROUND_WHITE}
         };
-            
+        std::string getColorCode(const Color p_color);
     } // #END: ansi
 
 } // #END: pureLog::colors
