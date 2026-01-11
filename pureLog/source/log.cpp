@@ -20,5 +20,18 @@ namespace pureLog::log{ // #scope: pureLog::log
     Log::Log(std::variant<Log::Level, std::string>&& p_level): level(std::move(p_level)){
 
     } // #END: Log(std::variant<Log::Level, std::string>&&)
+
+// #DIV: Static Methods
+
+    std::string Log::getLevelString(const std::variant<Log::Level, std::string>& p_level){
+        if(std::holds_alternative<Log::Level>(p_level)) [[likely]] {
+            if(auto node = LEVEL_STRINGS.find(std::get<Log::Level>(p_level)); node != LEVEL_STRINGS.end()) [[likely]] {
+                return node->second;
+            }
+            return ""; // Level not found
+        }else{
+            return std::get<std::string>(p_level);
+        }
+    }
         
 } // #END: pureLog::log

@@ -8,7 +8,7 @@ namespace pureLog::log{ // #scope: pureLog::log
 
     // #STRUCT: Log
     struct Log{
-    // Public Types
+    // Types
 
         // #ENUM: Log::Level, std::uint8_t Enum Class
         enum class Level: std::uint8_t{
@@ -22,17 +22,19 @@ namespace pureLog::log{ // #scope: pureLog::log
             DEBUG
         }; // #END: log::Level
         
-    // Public Factory Methods
+    // Factory Methods
         Log();
         explicit Log(const std::variant<Log::Level, std::string> p_level);
         explicit Log(std::variant<Log::Level, std::string>&& p_level);
         Log(const Log&) = default; // #DEFAULT: Log(const Log&), Default Copy Constructor
         Log(Log&&) = default; // #DEFAULT: Log(Log&&), Default Move Constructor
         ~Log() = default; // #DEFAULT: ~Log(), Default Destructor
-    // Public Operators
+    // Operators
         Log& operator=(const Log&) = default; // #DEFAULT: operator=(const Log&), Default Copy Assignment Operator
         Log& operator=(Log&&) = default; // #DEFAULT: operator=(Log&&), Default Move Assignment Operator
-    // Public Static Members
+    // Static Methods
+        static std::string getLevelString(const std::variant<Log::Level, std::string>& p_level);
+    // Static Members
         static inline const std::unordered_map<Level, std::string> LEVEL_STRINGS = {
             {Level::INFO, "Info"},
             {Level::WARN, "Warn"},
@@ -42,7 +44,7 @@ namespace pureLog::log{ // #scope: pureLog::log
             {Level::TRACE, "Trace"},
             {Level::DEBUG, "Debug"}
         };
-    // Public Members
+    // Members
         std::variant<Level, std::string> level; // Built-In Level or custom level string
         std::string message;
         std::optional<std::source_location> location;

@@ -5,6 +5,7 @@ set(SOURCE_FILES
     "${PURE_LOG_SOURCE_DIR}/consoleOut.cpp"
     "${PURE_LOG_SOURCE_DIR}/fileOut.cpp"
     "${PURE_LOG_SOURCE_DIR}/outputStream.cpp"
+    "${PURE_LOG_SOURCE_DIR}/colors.cpp"
 )
 set(INCLUDE_DIR
     ${INCLUDE}

@@ -28,11 +28,13 @@ namespace pureLog{
 
     // #NAMESPACE: formats, Inline Module Namespace
     inline namespace formats{
-        struct Format;
+        struct Formatting;
     } // #END: formats
 
     // #NAMESPACE: colors, Inline Module Namespace
     inline namespace colors{
+        struct Coloring;
+        enum class Color: std::uint8_t;
         namespace ansi{}
     } // #END: colors
 
@@ -47,7 +49,7 @@ namespace pureLog{
     inline namespace logger{
         constexpr bool USING_LEVEL_FORMATS = true;
         constexpr bool USING_COLORS = true;
-        template<class T_Derived, bool t_usingLevelFormats = USING_LEVEL_FORMATS, bool t_usingColors = USING_COLORS> class Logger;
+        template<class T_Derived, bool t_usingLevelFormatting = USING_LEVEL_FORMATS, bool t_usingColors = USING_COLORS> class Logger;
     } // #END: logger
 
     // #NAMESPACE: consoleOut, Inline Module Namespace
