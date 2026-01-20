@@ -67,5 +67,6 @@ int main(){
         debugger.trace("hi").location();
         debugger.flush().timeFormat("<{}:{}:{}:{}>");
     }
+
     return 0;
 }
