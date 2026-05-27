@@ -1,0 +1,17 @@
+module;  // Global module fragment
+
+// #FILE: logger.mpp, Module Interface File
+
+#include "pureLog.hpp" // #INCLUDE: pureLog.hpp, Project Header File
+
+export module pureLog:logger; // #MODULE: pureLog:logger, Component Module Partition
+
+import :log;
+import :colors;
+import :formatting;
+import :outputStream;
+import :consoleOut;
+
+#define INCLUDED_BY_MODULE
+#include "logger.hpp"
+#undef INCLUDED_BY_MODULE

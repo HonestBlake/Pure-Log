@@ -1,0 +1,19 @@
+module;  // Global module fragment
+
+// #FILE: pureLog.mpp, Project Module Interface Unit
+
+#include "pureLog.hpp" // #INCLUDE: pureLog.hpp, Project Header File
+
+export module pureLog; // #MODULE: pureLog, Project Module
+
+export import :colors; // #EXPORT: colors, Component Module Partition
+export import :consoleOut; // #EXPORT: consoleOut, Component Module Partition
+export import :fileOut; // #EXPORT: fileOut, Component Module Partition
+export import :formatting; // #EXPORT: formatting, Component Module Partition
+export import :log; // #EXPORT: log, Component Module Partition
+export import :logger; // #EXPORT: logger, Component Module Partition
+export import :outputStream; // #EXPORT: outputStream, Component Module Partition
+
+export namespace pureLog{
+    using ::pureLog::TimePoint;
+}

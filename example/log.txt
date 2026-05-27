@@ -1,0 +1,20 @@
+[0m[1;91m[FileLogger][0m[0;91m (1:8:18) Error: Invalid value passed to parser: 3[0m
+[0m[1;91m[FileLogger][0m[0;91m Warn: This is a warning message.[0m -- int main(), Line: 45 C:/Users/blake/Programing/C++ Projects/Pure Log/example/example.cpp
+[0m[1;91m[FileLogger][0m[0;91m Info: Informational message without additional data.[0m
+[0m[1;91m[FileLogger][0m[0;91m Debug: Debugging value: 42[0m
+[0m[1;91m[FileLogger][0m[0;91m (1:8:18) Critical: Critical error encountered! System will shut down.[0m -- int main(), Line: 48 C:/Users/blake/Programing/C++ Projects/Pure Log/example/example.cpp
+[0m[1;91m[FileLogger][0m[0;91m <1:8:18:267> Error: Invalid value passed to parser: 3[0m
+[0m[1;91m[FileLogger][0m[0;91m Warn: This is a warning message.[0m -- int main(), Line: 45 C:/Users/blake/Programing/C++ Projects/Pure Log/example/example.cpp
+[0m[1;91m[FileLogger][0m[0;91m Info: Informational message without additional data.[0m
+[0m[1;91m[FileLogger][0m[0;91m Debug: Debugging value: 42[0m
+[0m[1;91m[FileLogger][0m[0;91m <1:8:18:267> Critical: Critical error encountered! System will shut down.[0m -- int main(), Line: 48 C:/Users/blake/Programing/C++ Projects/Pure Log/example/example.cpp
+[0;91m [0m[1;91m[FileLogger][0m[0;91m (1:11:2) Error: Invalid value passed to parser: 3[0m[0m
+[0;91m [0m[1;91m[FileLogger][0m[0;91m Warn: This is a warning message.[0m -- int main(), Line: 45 C:/Users/blake/Programing/C++ Projects/Pure Log/example/example.cpp[0m
+[0;91m [0m[1;91m[FileLogger][0m[0;91m Info: Informational message without additional data.[0m[0m
+[0;91m [0m[1;91m[FileLogger][0m[0;91m Debug: Debugging value: 42[0m[0m
+[0;91m [0m[1;91m[FileLogger][0m[0;91m (1:11:2) Critical: Critical error encountered! System will shut down.[0m -- int main(), Line: 48 C:/Users/blake/Programing/C++ Projects/Pure Log/example/example.cpp[0m
+[0;91m [0m[1;91m[FileLogger][0m[0;91m <1:11:2:492> Error: Invalid value passed to parser: 3[0m[0m
+[0;91m [0m[1;91m[FileLogger][0m[0;91m Warn: This is a warning message.[0m -- int main(), Line: 45 C:/Users/blake/Programing/C++ Projects/Pure Log/example/example.cpp[0m
+[0;91m [0m[1;91m[FileLogger][0m[0;91m Info: Informational message without additional data.[0m[0m
+[0;91m [0m[1;91m[FileLogger][0m[0;91m Debug: Debugging value: 42[0m[0m
+[0;91m [0m[1;91m[FileLogger][0m[0;91m <1:11:2:492> Critical: Critical error encountered! System will shut down.[0m -- int main(), Line: 48 C:/Users/blake/Programing/C++ Projects/Pure Log/example/example.cpp[0m

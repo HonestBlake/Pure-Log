@@ -1,0 +1,8 @@
+#include "../../pureLog/pureLog.hpp"
+#include "../../pureLog/log.hpp"
+#include "../../pureLog/colors.hpp"
+#include "../../pureLog/formatting.hpp"
+#include "../../pureLog/outputStream.hpp"
+#include "../../pureLog/consoleOut.hpp"
+#include "../../pureLog/fileOut.hpp"
+#include "../../pureLog/logger.hpp"

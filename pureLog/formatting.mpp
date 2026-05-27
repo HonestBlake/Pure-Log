@@ -1,0 +1,13 @@
+module;  // Global module fragment
+
+// #FILE: formatting.mpp, Module Interface File
+
+#include "pureLog.hpp" // #INCLUDE: pureLog.hpp, Project Header File
+
+export module pureLog:formatting; // #MODULE: pureLog:formatting, Component Module Partition
+
+import :colors;
+
+#define INCLUDED_BY_MODULE
+#include "formatting.hpp"
+#undef INCLUDED_BY_MODULE

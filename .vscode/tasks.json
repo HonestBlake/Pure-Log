@@ -1,0 +1,62 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "CMake: Select GCC",
+            "type": "process",
+            "command": "powershell",
+            "args": [
+                "-NoProfile",
+                "-ExecutionPolicy",
+                "Bypass",
+                "-File",
+                "${workspaceFolder}/.vscode/select-cmake-compiler.ps1",
+                "GCC"
+            ],
+            "problemMatcher": []
+        },
+        {
+            "label": "CMake: Select Clang",
+            "type": "process",
+            "command": "powershell",
+            "args": [
+                "-NoProfile",
+                "-ExecutionPolicy",
+                "Bypass",
+                "-File",
+                "${workspaceFolder}/.vscode/select-cmake-compiler.ps1",
+                "Clang"
+            ],
+            "problemMatcher": []
+        },
+        {
+            "label": "CMake: Configure",
+            "type": "process",
+            "command": "powershell",
+            "args": [
+                "-NoProfile",
+                "-ExecutionPolicy",
+                "Bypass",
+                "-File",
+                "${workspaceFolder}/.vscode/configure-cmake.ps1",
+                "${input:cmakeConfigurePreset}"
+            ],
+            "problemMatcher": []
+        }
+    ],
+    "inputs": [
+        {
+            "id": "cmakeConfigurePreset",
+            "type": "pickString",
+            "description": "CMake configure preset",
+            "default": "Debug",
+            "options": [
+                "Debug",
+                "Release",
+                "Debug-Modules",
+                "Release-Modules",
+                "Clangd-Modules"
+            ]
+        }
+    ]
+}

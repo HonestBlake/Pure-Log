@@ -1,0 +1,13 @@
+module;  // Global module fragment
+
+// #FILE: fileOut.mpp, Module Interface File
+
+#include "pureLog.hpp" // #INCLUDE: pureLog.hpp, Project Header File
+
+export module pureLog:fileOut; // #MODULE: pureLog:fileOut, Component Module Partition
+
+import :outputStream;
+
+#define INCLUDED_BY_MODULE
+#include "fileOut.hpp"
+#undef INCLUDED_BY_MODULE

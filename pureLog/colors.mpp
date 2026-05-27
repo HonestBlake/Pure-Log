@@ -1,0 +1,11 @@
+module;  // Global module fragment
+
+// #FILE: colors.mpp, Module Interface File
+
+#include "pureLog.hpp" // #INCLUDE: pureLog.hpp, Project Header File
+
+export module pureLog:colors; // #MODULE: pureLog:colors, Component Module Partition
+
+#define INCLUDED_BY_MODULE
+#include "colors.hpp"
+#undef INCLUDED_BY_MODULE
