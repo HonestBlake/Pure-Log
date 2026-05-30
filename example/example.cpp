@@ -50,7 +50,7 @@ private:
     }
 };
 
-int main(){
+int main(int argc, char** argv){
     Debugger& debugger = Debugger::get();
     // debugger.colorFormatWarnName();
     // debugger.formatNameColor(pureLog::Color::WHITE);

@@ -157,7 +157,7 @@ namespace pureLog{ // #scope: pureLog
         std::optional<Log> m_bufferedLog;
         OutputStream& m_outputStream;
     }; // #END: Logger
-
+    
     // #CONCEPT: LoggerDerived, Type Concept
     MODULE_EXPORT template<class Type, bool t_usingLevelFormatting, bool t_usingColors> concept LoggerDerived = std::is_base_of_v<Logger<Type, t_usingLevelFormatting, t_usingColors>, Type>;
     // #END: LoggerDerived

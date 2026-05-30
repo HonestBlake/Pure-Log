@@ -1,9 +1,0 @@
-﻿{
-    "cmake.configureArgs":  [
-                                "--fresh"
-                            ],
-    "cmake.configureEnvironment":  {
-                                       "CC":  "C:/Program Files/MSYS2/mingw64/bin/gcc.exe",
-                                       "CXX":  "C:/Program Files/MSYS2/mingw64/bin/g++.exe"
-                                   }
-}
