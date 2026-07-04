@@ -2,9 +2,16 @@ module;  // Global module fragment
 
 // #FILE: outputStream.mpp, Module Interface File
 
-#include "pureLog.hpp" // #INCLUDE: pureLog.hpp, Project Header File
+#ifndef PURE_LOG_IMPORT_STD
+    #include "pureLog.hpp" // #INCLUDE: pureLog.hpp, Project Header File
+#endif
 
 export module pureLog:outputStream; // #MODULE: pureLog:outputStream, Component Module Partition
+
+#ifdef PURE_LOG_IMPORT_STD
+    import std;
+    #include "pureLog.hpp" // #INCLUDE: pureLog.hpp, Project Header File
+#endif
 
 #define INCLUDED_BY_MODULE
 #include "outputStream.hpp"

@@ -47,6 +47,13 @@ if(PURE_LOG_USE_MODULES)
 
     add_library(PureLog STATIC ${PURE_LOG_MODULE_SOURCE_FILES})
     target_compile_definitions(PureLog PRIVATE PURE_LOG_USE_MODULES=1)
+    if(PURE_LOG_IMPORT_STD)
+        target_compile_definitions(PureLog PRIVATE PURE_LOG_IMPORT_STD=1)
+        set_target_properties(PureLog PROPERTIES CXX_MODULE_STD ON)
+        if(CMAKE_CXX_COMPILER_ID STREQUAL "GNU")
+            target_link_options(PureLog INTERFACE -Wl,--allow-multiple-definition)
+        endif()
+    endif()
     target_include_directories(PureLog PRIVATE "${PURE_LOG_HEADER_DIR}")
 
     set_source_files_properties(${PURE_LOG_MODULE_FILES} PROPERTIES LANGUAGE CXX)

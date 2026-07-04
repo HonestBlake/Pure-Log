@@ -12,7 +12,13 @@
 
 #pragma once
 
-#include "stdIncludes.hpp" // #INCLUDE: standardLibs.hpp, Standard Library Includes
+#if defined(PURE_LOG_IMPORT_STD) && !defined(PURE_LOG_USE_MODULES)
+    #error "PURE_LOG_IMPORT_STD requires PURE_LOG_USE_MODULES."
+#endif
+
+#ifndef PURE_LOG_IMPORT_STD
+    #include "stdIncludes.hpp" // #INCLUDE: standardLibs.hpp, Standard Library Includes
+#endif
 
 #define PURE_LOG_PURE_VIRTUAL 0 // For pure virtual declarations
 

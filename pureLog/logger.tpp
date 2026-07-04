@@ -806,6 +806,9 @@ namespace pureLog{ // #scope: pureLog
                 return std::vformat(levelFormatting.level, std::make_format_args(levelString));
             }
         }
+        if(std::holds_alternative<Log::Level>(p_level) && std::get<Log::Level>(p_level) == Log::Level::NONE){
+            return ""; // A NONE level does not display a level string
+        }
         return std::vformat(m_formatting.level, std::make_format_args(levelString));
     } // #END: getFormattedLevel(const std::variant<Log::Level, std::string>&)
 

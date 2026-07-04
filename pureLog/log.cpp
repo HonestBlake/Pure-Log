@@ -3,11 +3,21 @@
 #ifdef PURE_LOG_USE_MODULES // Using Modules
     module;
 
-    #include "pureLog.hpp" // #INCLUDE: pureLog.hpp, Project Header File
+    #ifndef PURE_LOG_IMPORT_STD
+        #include "pureLog.hpp" // #INCLUDE: pureLog.hpp, Project Header File
+    #endif
 
     module pureLog; // #FROM: pureLog, Project Module Implementation Unit
 
+    #ifdef PURE_LOG_IMPORT_STD
+        import std;
+    #endif
+
     import :log;
+
+    #ifdef PURE_LOG_IMPORT_STD
+        #include "pureLog.hpp" // #INCLUDE: pureLog.hpp, Project Header File
+    #endif
 #else // Using Headers
     #include "log.hpp" // #INCLUDE: log.hpp, Module Header File
 #endif

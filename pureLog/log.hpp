@@ -42,11 +42,11 @@ namespace pureLog{ // #scope: pureLog
     // Static Members
         static inline const std::unordered_map<Level, std::string> LEVEL_STRINGS = {
             {Level::INFO, "Info"},
-            {Level::WARN, "Warn"},
+            {Level::WARN, "Warning"},
             {Level::ERROR, "Error"},
             {Level::CRITICAL, "Critical"},
             {Level::FATAL, "Fatal"},
-            {Level::TRACE, "Trace"},
+            {Level::TRACE, "Tracing"},
             {Level::DEBUG, "Debug"}
         };
     // Members

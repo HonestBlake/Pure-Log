@@ -1,8 +1,12 @@
-#include <filesystem>
-#include <iostream>
-#include <ranges>
-#include <stdexcept>
-#include <string>
+#ifdef PURE_LOG_IMPORT_STD
+    import std;
+#else
+    #include <filesystem>
+    #include <iostream>
+    #include <ranges>
+    #include <stdexcept>
+    #include <string>
+#endif
 
 #ifdef PURE_LOG_USE_MODULES
     import pureLog;

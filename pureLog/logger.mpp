@@ -2,15 +2,25 @@ module;  // Global module fragment
 
 // #FILE: logger.mpp, Module Interface File
 
-#include "pureLog.hpp" // #INCLUDE: pureLog.hpp, Project Header File
+#ifndef PURE_LOG_IMPORT_STD
+    #include "pureLog.hpp" // #INCLUDE: pureLog.hpp, Project Header File
+#endif
 
 export module pureLog:logger; // #MODULE: pureLog:logger, Component Module Partition
+
+#ifdef PURE_LOG_IMPORT_STD
+    import std;
+#endif
 
 import :log;
 import :colors;
 import :formatting;
 import :outputStream;
 import :consoleOut;
+
+#ifdef PURE_LOG_IMPORT_STD
+    #include "pureLog.hpp" // #INCLUDE: pureLog.hpp, Project Header File
+#endif
 
 #define INCLUDED_BY_MODULE
 #include "logger.hpp"
